@@ -1,0 +1,6 @@
+{
+  "sign_in_button": {
+    "resource_id": "com.amazon.mShop.android.shopping:id/sign_in_button",
+    "description": "Sign in button"
+  }
+}
