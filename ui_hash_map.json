@@ -20,11 +20,11 @@
     "description": "Submit button"
   },
   "not_now_button": {
-    "command": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Not now\")",
+    "locator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Not now\")",
     "description": "Not now button"
   },
   "add_mobile_number_label": {
-    "command": "new UiSelector().className(\"android.view.View\").textContains(\"Add mobile number\")",
+    "locator": "new UiSelector().className(\"android.view.View\").textContains(\"Add mobile number\")",
     "description": "Not now button"
   }
 }
