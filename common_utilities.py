@@ -8,7 +8,7 @@ class CommonUtilities:
         self.driver = driver
         self.ui_hash_map = ui_hash_map
 
-    def wait_for_element(self, element_hash_map, retries=10):
+    def wait_for_element(self, element_hash_map, retries=5):
         for i in range(retries):
             try:
                 element = self.find_element(element_hash_map)
@@ -23,12 +23,21 @@ class CommonUtilities:
         if 'locator' in element_hash_map:
             cmd = element_hash_map['locator']
             element = self.driver.find_element_by_android_uiautomator(cmd)
-        else:
+        elif 'class_name' in element_hash_map:
+            element = WebDriverWait(self.driver, element_timeout).until(
+                EC.presence_of_element_located((By.CLASS_NAME, element_hash_map["class_name"]))
+            )
+        elif 'resource_id' in element_hash_map:
             element = WebDriverWait(self.driver, element_timeout).until(
                 EC.presence_of_element_located((By.ID, element_hash_map["resource_id"]))
             )
+        else:
+            raise Exception("Invalid locator")
         return element
 
     def click(self, element):
         element.click()
+
+    def type_text_in_element(self, element, text):
+        element.send_keys(text)
 

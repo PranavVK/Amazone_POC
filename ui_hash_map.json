@@ -4,19 +4,19 @@
     "description": "Sign in button"
   },
   "email_login_textfield": {
-    "resource_id": "ap_email_login",
+    "class_name": "android.widget.EditText",
     "description": "Sign in email textfield"
   },
    "password_login_textfield": {
-    "resource_id": "ap_password",
+     "locator": "new UiSelector().className(\"android.widget.EditText\").textContains(\"Amazon password\")",
     "description": "Sign in password textfield"
   },
   "continue_button": {
-    "resource_id": "ap_email_login",
+    "locator": "new UiSelector().className(\"android.widget.Button\").textContains(\"Continue\")",
     "description": "continue button "
   },
   "sign_in_submit_button": {
-    "resource_id": "signInSubmit",
+    "locator": "new UiSelector().className(\"android.widget.Button\").textContains(\"Sign-In\")",
     "description": "Submit button"
   },
   "not_now_button": {
