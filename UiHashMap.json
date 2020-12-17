@@ -2,5 +2,29 @@
   "sign_in_button": {
     "resource_id": "com.amazon.mShop.android.shopping:id/sign_in_button",
     "description": "Sign in button"
+  },
+  "email_login_textfield": {
+    "resource_id": "ap_email_login",
+    "description": "Sign in email textfield"
+  },
+   "password_login_textfield": {
+    "resource_id": "ap_password",
+    "description": "Sign in password textfield"
+  },
+  "continue_button": {
+    "resource_id": "ap_email_login",
+    "description": "continue button "
+  },
+  "sign_in_submit_button": {
+    "resource_id": "signInSubmit",
+    "description": "Submit button"
+  },
+  "not_now_button": {
+    "command": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Not now\")",
+    "description": "Not now button"
+  },
+  "add_mobile_number_label": {
+    "command": "new UiSelector().className(\"android.view.View\").textContains(\"Add mobile number\")",
+    "description": "Not now button"
   }
 }
