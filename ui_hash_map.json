@@ -26,5 +26,53 @@
   "add_mobile_number_label": {
     "locator": "new UiSelector().className(\"android.view.View\").textContains(\"Add mobile number\")",
     "description": "Not now button"
+  },
+  "action_bar_cart": {
+    "resource_id": "com.amazon.mShop.android.shopping:id/action_bar_cart",
+    "description": "Cart button in home screen"
+  },
+  "item_search_field": {
+    "resource_id": "com.amazon.mShop.android.shopping:id/rs_search_src_text",
+    "description": "Item search field"
+  },
+  "dropdown_search_result": {
+    "locator": "new UiSelector().resourceId(\"com.amazon.mShop.android.shopping:id/iss_search_dropdown_item_text\").textContains(\"command\")",
+    "description": "Drop down search result"
+  },
+  "product_search_result": {
+    "resource_id": "com.amazon.mShop.android.shopping:id/list_product_linear_layout",
+    "description": "Product search result"
+  },
+  "product_title": {
+    "locator": "new UiSelector().resourceId(\"com.amazon.mShop.android.shopping:id/item_title\").textContains(\"command\")",
+    "description": "Product title"
+  },
+  "product_price": {
+    "resource_id": "com.amazon.mShop.android.shopping:id/rs_results_price",
+    "description": "Product price"
+  },
+  "hamburger_button": {
+    "resource_id": "com.amazon.mShop.android.shopping:id/action_bar_burger",
+    "description": "Side panel hamburger button"
+  },
+   "settings_button_in_side_panel": {
+    "locator": "new UiSelector().resourceId(\"com.amazon.mShop.android.shopping:id/drawer_item_title\").textContains(\"Settings\")",
+    "description": "Settings button in side panel"
+  },
+  "select_country_button": {
+    "locator": "new UiSelector().resourceId(\"com.amazon.mShop.android.shopping:id/drawer_item_title\").textContains(\"Country\")",
+    "description": "select country button"
+  },
+  "country_region_selector": {
+    "locator": "new UiSelector().className(\"android.widget.Button\").textContains(\"Country/Region:\")",
+    "description": "Country region selector"
+  },
+   "country_select_radio_button": {
+    "locator": "new UiSelector().className(\"android.widget.RadioButton\").textContains(\"command\")",
+    "description": "Country select radio button"
+  },
+  "done_button": {
+    "locator": "new UiSelector().className(\"android.widget.Button\").textContains(\"Done\")",
+    "description": "Done button"
   }
 }

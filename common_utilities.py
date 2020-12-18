@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,6 +20,7 @@ class CommonUtilities:
         return element
 
     def find_element(self, element_hash_map):
+        default_implicit_wait = 2
         element_timeout = 10
         if 'locator' in element_hash_map:
             cmd = element_hash_map['locator']
@@ -33,6 +35,7 @@ class CommonUtilities:
             )
         else:
             raise Exception("Invalid locator")
+        time.sleep(default_implicit_wait)
         return element
 
     def click(self, element):
@@ -41,3 +44,23 @@ class CommonUtilities:
     def type_text_in_element(self, element, text):
         element.send_keys(text)
 
+    def is_element_present(self, element_hash_map):
+        element = None
+        try:
+            element = self.find_element(element_hash_map)
+        except:
+            pass
+        if element is None:
+            return False
+        return True
+
+    def get_modified_copy(self, selector, member_name, member_text, replacement_text):
+        map_copy = dict(self.ui_hash_map[selector])
+        map_copy[member_name] = map_copy[member_name].replace(member_text, replacement_text)
+        return map_copy
+
+    def perform_tap(self):
+        size = self.driver.get_window_size()
+        x = size[0] / 2
+        y = size[1] / 2
+        self.driver.tap(x, y)
