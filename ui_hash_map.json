@@ -74,5 +74,33 @@
   "done_button": {
     "locator": "new UiSelector().className(\"android.widget.Button\").textContains(\"Done\")",
     "description": "Done button"
+  },
+  "delete_button": {
+    "locator": "new UiSelector().className(\"android.widget.Button\").textContains(\"Delete\")",
+    "description": "Delete button in cart"
+  },
+  "home_button_in_side_panel": {
+    "locator": "new UiSelector().resourceId(\"com.amazon.mShop.android.shopping:id/drawer_item_title\").textContains(\"Home\")",
+    "description": "Settings button in side panel"
+  },
+  "enter_pin_code_button": {
+    "resource_id": "com.amazon.mShop.android.shopping:id/loc_ux_pin_code_button",
+    "description": "Enter pin code button"
+  },
+  "search_result_cell": {
+    "xpath": "//android.widget.LinearLayout[@resource-id = 'com.amazon.mShop.android.shopping:id/list_product_linear_layout']/../android.widget.TextView[contains(@text, 'command')]",
+    "description": "search_result_cell"
+  },
+  "product_brand_name": {
+    "locator": "new UiSelector().className(\"android.widget.TextView\").textContains(\"Brand:\")",
+    "description": "Product branch name"
+  },
+  "product_description": {
+    "locator": "new UiSelector().className(\"android.view.View\").textContains(\"command\")",
+    "description": "Product description"
+  },
+  "product_price": {
+    "xpath": "//android.view.View[@text = 'Deal Price:']/following-sibling::android.view.View[contains(@text, 'Scheduled Delivery')",
+    "description": "Product description"
   }
 }
