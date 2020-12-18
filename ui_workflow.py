@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from common_utilities import CommonUtilities
 
 
@@ -29,7 +30,8 @@ class UIWorkflow:
         continue_button = self.common_utilities.wait_for_element(self.ui_hash_map["continue_button"])
         self.common_utilities.click(continue_button)
 
-        password_login_textfield = self.common_utilities.wait_for_element(self.ui_hash_map["password_login_textfield"])
+        password_login_textfield = self.common_utilities.wait_for_element(self.ui_hash_map["password_login_textfield"],
+                                                                          20)
         self.common_utilities.click(password_login_textfield)
         self.common_utilities.type_text_in_element(password_login_textfield, password)
 
@@ -46,7 +48,13 @@ class UIWorkflow:
         hamburger_button = self.common_utilities.wait_for_element(self.ui_hash_map["hamburger_button"])
         self.common_utilities.click(hamburger_button)
 
-        settings_button_in_side_panel = self.common_utilities.wait_for_element(self.ui_hash_map["settings_button_in_side_panel"])
+        retry_count = 0
+        while not self.common_utilities.is_element_present(self.ui_hash_map["settings_button_in_side_panel"]) and retry_count < 5:
+            self.common_utilities.swipe(True)
+            time.sleep(2)  # Waiting for loading refreshed contents
+            retry_count += 1
+        settings_button_in_side_panel = self.common_utilities.wait_for_element(
+            self.ui_hash_map["settings_button_in_side_panel"])
         self.common_utilities.click(settings_button_in_side_panel)
 
         select_country_button = self.common_utilities.wait_for_element(self.ui_hash_map["select_country_button"])
@@ -64,6 +72,21 @@ class UIWorkflow:
 
         self.common_utilities.wait_for_element(self.ui_hash_map["action_bar_cart"])
 
+    def clear_cart_if_items_present(self):
+        action_bar_cart = self.common_utilities.wait_for_element(self.ui_hash_map["action_bar_cart"])
+        self.common_utilities.click(action_bar_cart)
+
+        while self.common_utilities.is_element_present(self.ui_hash_map["delete_button"]):
+            delete_button = self.common_utilities.wait_for_element(self.ui_hash_map["delete_button"])
+            self.common_utilities.click(delete_button)
+
+        hamburger_button = self.common_utilities.wait_for_element(self.ui_hash_map["hamburger_button"])
+        self.common_utilities.click(hamburger_button)
+
+        home_button_in_side_panel = self.common_utilities.wait_for_element(
+            self.ui_hash_map["home_button_in_side_panel"])
+        self.common_utilities.click(home_button_in_side_panel)
+
     def search_for_an_item(self, with_text):
         item_search_field = self.common_utilities.wait_for_element(self.ui_hash_map["item_search_field"])
         self.common_utilities.click(item_search_field)
@@ -80,4 +103,16 @@ class UIWorkflow:
         product_search_result = self.common_utilities.wait_for_element(tmp_map)
         self.common_utilities.click(product_search_result)
 
+        if self.common_utilities.is_element_present(self.ui_hash_map["enter_pin_code_button"]):
+            self.common_utilities.perform_tap()
 
+        product_brand_name = self.common_utilities.wait_for_element(self.ui_hash_map["product_brand_name"])
+        product_brand_name_value = self.common_utilities.get_text_of_element(product_brand_name)
+
+        product_description_map = self.common_utilities.get_modified_copy("product_description", "locator", "command",
+                                                                          with_name)
+        product_description = self.common_utilities.wait_for_element(product_description_map)
+        product_description_value = self.common_utilities.get_text_of_element(product_description)
+
+        product_price = self.common_utilities.wait_for_element(self.ui_hash_map["product_price"])
+        product_price_value = self.common_utilities.get_text_of_element(product_price)
